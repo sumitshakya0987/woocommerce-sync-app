@@ -42,12 +42,12 @@ To build a responsive, attractive product management platform using:
 ---
 
 ## 📁 Folder Structure
-
+```bash
 project-root/
 │
 ├── client/ # React Frontend
-│ ├── components/ # Reusable Components (Navbar, Product Card, etc.)
-│ ├── pages/ # Login, Register, Home, Product Form, Product List
+│ ├── components/ # Reusable Components (Navbar)
+│ ├── pages/ # Login, Regiter , Dashboard , ProductForm , ProductPage
 │ ├── context/ # Auth Context
 │ ├── services/ # API Service Layer (Axios)
 │ ├── styles/ # Custom styles (optional)
@@ -62,7 +62,7 @@ project-root/
 │ └── index.js # Server Entry
 │
 └── README.md # Project Instructions
-
+```
 ## 🧪 Setup Instructions
 
 Clone the repository:
