@@ -1,0 +1,28 @@
+.homepage-container {
+  height: 100vh;
+  background-image: url('https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg?cs=srgb&dl=pexels-pixabay-356056.jpg&fm=jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  opacity: .85;
+  padding: 2rem;
+  height: 500px;
+}
+
+.homepage-container::before {
+  content: '';
+  position: absolute;
+  
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55); 
+  z-index: 1;
+}
+
+.content-box {
+  z-index: 2;
+  position: relative;
+}
