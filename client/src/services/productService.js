@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const API = "https://woocommerce-sync-app.onrender.com";
-
+const API = "https://woocommerce-sync-app.onrender.com/api";
 
 const getAuthHeader = () => {
   const user = JSON.parse(localStorage.getItem('user'));
