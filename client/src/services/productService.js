@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = "https://woocommerce-sync-app.vercel.app/";
+const API = "https://woocommerce-sync-app.onrender.com";
 
 
 const getAuthHeader = () => {
