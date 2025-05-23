@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API = "https://woocommerce-sync-app.onrender.com/api";
+const API = "https://woocommerce-sync-app.onrender.com";
 
 export const loginUser = (data) =>
   axios.post(`${API}/auth/login`, data).then(res => res.data);

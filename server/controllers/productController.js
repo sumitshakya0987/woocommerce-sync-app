@@ -1,4 +1,5 @@
 const Product = require('../models/Product');
+const WooCommerce = require('../services/wooService');
 const syncWithWooCommerce = require('../services/wooService');
 
 exports.createProduct = async (req, res) => {
@@ -13,9 +14,28 @@ exports.createProduct = async (req, res) => {
       imageUrl
     });
 
+   const data={
+    name:product.name,
+    description:product.description,
+    type: "simple",
+    price:String(product.price),
+    images:[
+     {
+       src:product.imageUrl
+    }
+    ]
+   }
+
     try {
-      await syncWithWooCommerce(product);
-      product.status = 'Synced to WooCommerce';
+      WooCommerce.post("products", data)
+  .then((response) => {
+    console.log(response.data);
+  })
+  .catch((error) => {
+    console.log(error.response.data);
+  });
+ 
+
     } catch (err) {
       console.error('WooCommerce sync failed:', err.response?.data || err.message || err);
       product.status = 'Sync Failed';

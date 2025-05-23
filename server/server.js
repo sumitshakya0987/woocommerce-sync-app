@@ -17,10 +17,7 @@ const app = express();
 app.use(express.json());
 
 // ✅ Fixed CORS configuration
-app.use(cors({
-  origin: "https://woocommerce-sync-app.vercel.app", // ✅ No trailing slash
-  credentials: true
-}));
+app.use(cors());
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
