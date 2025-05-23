@@ -28,3 +28,13 @@ exports.createProduct = async (req, res) => {
     res.status(500).json({ message: 'Error creating product' });
   }
 };
+
+exports.getMyProducts = async (req, res) => {
+  try {
+    const products = await Product.find({ user: req.user });
+    res.json(products);
+  } catch (err) {
+    console.error('Error fetching products:', err.message || err);
+    res.status(500).json({ message: 'Error fetching products' });
+  }
+};
