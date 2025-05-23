@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API = "https://woocommerce-sync-app.vercel.app/";
+
 
 const getAuthHeader = () => {
   const user = JSON.parse(localStorage.getItem('user'));
