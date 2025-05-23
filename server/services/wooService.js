@@ -24,16 +24,24 @@ module.exports = async function syncWithWooCommerce(product) {
       type: 'simple',
       regular_price: product.price.toString(),
       description: product.description,
-      images: [{ src: product.imageUrl }]
+      images: product.imageUrl ? [{ src: product.imageUrl }] : []  // Optional image
     }
   };
 
   const headers = oauth.toHeader(oauth.authorize(requestData));
 
-  await axios.post(apiUrl, requestData.data, {
-    headers: {
-      ...headers,
-      'Content-Type': 'application/json'
-    }
-  });
+  try {
+    const response = await axios.post(apiUrl, requestData.data, {
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    console.log("✅ WooCommerce Sync Success:", response.data);
+    return { success: true, data: response.data };
+  } catch (error) {
+    console.error("❌ WooCommerce Sync Error:", error.response?.data || error.message);
+    return { success: false, error: error.response?.data || error.message };
+  }
 };

@@ -17,21 +17,14 @@ exports.createProduct = async (req, res) => {
       await syncWithWooCommerce(product);
       product.status = 'Synced to WooCommerce';
     } catch (err) {
+      console.error('WooCommerce sync failed:', err.response?.data || err.message || err);
       product.status = 'Sync Failed';
     }
 
     await product.save();
     res.json(product);
-  } catch {
+  } catch (err) {
+    console.error('Error creating product:', err.message || err);
     res.status(500).json({ message: 'Error creating product' });
-  }
-};
-
-exports.getMyProducts = async (req, res) => {
-  try {
-    const products = await Product.find({ user: req.user });
-    res.json(products);
-  } catch {
-    res.status(500).json({ message: 'Error fetching products' });
   }
 };
